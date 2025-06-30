@@ -1,3 +1,5 @@
 return {
-  "yochem/jq-playground.nvim"
+  "yochem/jq-playground.nvim",
+  cmd = { "JqPlayground" },
+  ft = { "json" },
 }
