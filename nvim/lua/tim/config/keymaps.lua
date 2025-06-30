@@ -82,6 +82,10 @@ function M.setup()
   vim.keymap.set('n', '<leader>nh', function() Snacks.notifier.show_history() end, { desc = 'Show Notification History' })
   vim.keymap.set('n', '<leader>nd', function() Snacks.notifier.hide() end, { desc = 'Dismiss Notifications' })
   
+  -- Development utilities
+  vim.keymap.set('n', '<leader>gb', function() Snacks.gitbrowse() end, { desc = 'Git Browse' })
+  vim.keymap.set('n', '<leader>bd', function() Snacks.bufdelete() end, { desc = 'Delete Buffer (Smart)' })
+  
   -- Snacks.picker (gradual migration from telescope)
   -- Primary pickers - faster alternatives to telescope
   vim.keymap.set('n', '<leader>sf', function() Snacks.picker.files() end, { desc = '[S]earch [F]iles (Snacks)' })

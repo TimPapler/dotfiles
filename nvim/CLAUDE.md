@@ -38,26 +38,30 @@ This is a personal Neovim configuration using the modern Lazy.nvim plugin manage
 
 ## Key Features
 
-### Snacks.nvim Ecosystem (19 Modules Enabled)
+### Snacks.nvim Ecosystem (23 Modules Enabled)
 1. **animate** - Smooth animations
 2. **bigfile** - Large file handling
-3. **dashboard** - Startup dashboard
-4. **dim** - Inactive code dimming
-5. **indent** - Indentation guides
-6. **input** - Enhanced input prompts
-7. **lazygit** - LazyGit integration
-8. **notifier** - Unified notification system
-9. **picker** - Primary fuzzy finder (replaces telescope for most uses)
-10. **quickfile** - Quick file operations
-11. **scope** - Scope highlighting
-12. **scratch** - Scratch buffers
-13. **scroll** - Smooth scrolling
-14. **statuscolumn** - Enhanced status column
-15. **terminal** - Terminal integration
-16. **toggle** - Various toggles (dim, hints, etc.)
-17. **words** - Word highlighting
-18. **zen** - Zen mode
-19. **zoom** - Window zooming
+3. **bufdelete** - Smart buffer deletion without disrupting layout
+4. **dashboard** - Startup dashboard
+5. **debug** - Pretty inspect & backtraces for development
+6. **dim** - Inactive code dimming
+7. **gitbrowse** - Open files/lines in browser (GitHub, GitLab, etc.)
+8. **image** - Image preview support
+9. **indent** - Indentation guides
+10. **input** - Enhanced input prompts
+11. **lazygit** - LazyGit integration
+12. **notifier** - Unified notification system
+13. **picker** - Primary fuzzy finder (replaces telescope for most uses)
+14. **profiler** - Performance profiling for Neovim
+15. **quickfile** - Quick file operations
+16. **scope** - Scope highlighting
+17. **scratch** - Scratch buffers
+18. **scroll** - Smooth scrolling
+19. **statuscolumn** - Enhanced status column
+20. **terminal** - Terminal integration
+21. **toggle** - Various toggles (dim, hints, etc.)
+22. **words** - Word highlighting
+23. **zen** - Zen mode
 
 ### LSP Configuration
 Located in `lua/tim/plugins/lspconfig.lua`. **Fully migrated to modern Neovim 0.11+ API**:
@@ -99,6 +103,7 @@ Located in multiple plugin files:
 - **Utilities**: `<leader>S` (scratch), `<leader>q*` (sessions)
 - **Toggles**: `<leader>td/ti/tI/tw` (dim/hints/indent/words)
 - **Notifications**: `<leader>nh/nd` (history/dismiss)
+- **Development**: `<leader>gb` (git browse), `<leader>bd` (smart buffer delete)
 
 ### Legacy (Telescope)
 - **Telescope access**: `<leader>T*` commands for specialized functions
@@ -185,12 +190,11 @@ require('dap-python').setup('path/to/python')
 -- Configure with rustaceanvim
 ```
 
-### 2. Additional Snacks.nvim Modules (6 Available)
-- **gitbrowse** - Open files/lines in browser
-- **profiler** - Performance profiling for Neovim
+### 2. Additional Snacks.nvim Modules (3 Remaining)
+✅ **Recently Added**: gitbrowse, profiler, debug, bufdelete
+**Still Available**:
 - **layout** - Advanced layout management
-- **win** - Window management utilities
-- **image** - Image preview support
+- **win** - Window management utilities  
 - **explorer** - Alternative to oil.nvim (consider evaluation)
 
 ### 3. Enhanced Git Integration

@@ -101,6 +101,12 @@ return {
     -- Input enhancements
     input = { enabled = true },
     
+    -- Development and productivity utilities
+    profiler = { enabled = true },
+    gitbrowse = { enabled = true },
+    debug = { enabled = true },
+    bufdelete = { enabled = true },
+    
     -- File explorer (keeping disabled for now, using oil.nvim)
     explorer = { enabled = false },
   },

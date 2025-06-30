@@ -104,6 +104,8 @@ return {
       { "<leader>tg", desc = "Open LazyGit" },
       { "<leader>nh", desc = "Show notification history" },
       { "<leader>nd", desc = "Dismiss notifications" },
+      { "<leader>gb", desc = "Git Browse (open in browser)" },
+      { "<leader>bd", desc = "Delete Buffer (Smart)" },
       
       -- Telescope legacy
       { "<leader>T", group = "telescope (legacy)" },
