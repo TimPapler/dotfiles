@@ -19,6 +19,7 @@ return {
       { "<leader>r", group = "refactor" },
       { "<leader>d", group = "debug/diagnostics" },
       { "<leader>dg", group = "debug go" },
+      { "<leader>dp", group = "debug python" },
       { "<leader>t", group = "toggle" },
       { "<leader>g", group = "git" },
       
@@ -186,6 +187,12 @@ return {
       -- Debug operations (Go)
       { "<leader>dgt", desc = "Debug Go Test" },
       { "<leader>dgl", desc = "Debug Last Go Test" },
+      
+      -- Debug operations (Python)
+      { "<leader>dpf", desc = "Debug Python File" },
+      { "<leader>dpm", desc = "Debug Python Test Method" },
+      { "<leader>dpc", desc = "Debug Python Test Class" },
+      { "<leader>dps", desc = "Debug Python Selection" },
     },
   },
   keys = {

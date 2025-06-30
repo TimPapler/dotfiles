@@ -78,12 +78,14 @@ Located in multiple plugin files:
 - `lua/tim/plugins/dap-ui.lua` - Debug UI with panels for stacks, scopes, breakpoints, watches, REPL, console
 - `lua/tim/plugins/dap-vscode-js.lua` - JavaScript/TypeScript debugging with vscode-js-debug
 - `lua/tim/plugins/dap-go.lua` - Go debugging with delve
+- `lua/tim/plugins/dap-python.lua` - Python debugging with debugpy
 - `lua/tim/plugins/xcodebuild.lua` - Swift/iOS debugging via codelldb
 
 **Supported Languages**:
 - **Swift/iOS**: Full xcodebuild integration with device/simulator debugging
 - **JavaScript/TypeScript**: Node.js, Jest tests, and Chrome debugging
 - **Go**: Test debugging and remote attach support
+- **Python**: Test method/class debugging, file debugging with virtual environment support
 - **Debug UI**: Full DAP UI auto-opens/closes with debug sessions
 
 ## Key Mappings
@@ -118,6 +120,7 @@ Located in multiple plugin files:
   - `<leader>b` (toggle breakpoint), `<leader>B` (message breakpoint)
 - **JavaScript/TypeScript**: `<leader>dj` (debug file), `<leader>dJ` (debug Jest tests)
 - **Go**: `<leader>dgt` (debug test), `<leader>dgl` (debug last test)
+- **Python**: `<leader>dpf` (debug file), `<leader>dpm/dpc` (debug test method/class), `<leader>dps` (debug selection)
 
 ## Development Commands
 
@@ -168,11 +171,14 @@ vim.lsp.set_log_level("debug")
 # JavaScript/TypeScript: Automatically installed via lazy.nvim
 # Go: Install delve
 go install github.com/go-delve/delve/cmd/dlv@latest
+# Python: Install debugpy
+pip install debugpy
 
 # Start debugging by language:
 # Swift/iOS: <leader>dd (build & debug), <leader>dr (debug without build)
 # JavaScript/TypeScript: <leader>dj (debug current file)
 # Go: <leader>dgt (debug test at cursor)
+# Python: <leader>dpf (debug file), <leader>dpm (debug test method)
 # General: <leader>dc (continue), <leader>ds (step over)
 # Breakpoints: <leader>b (Swift), <leader>db (other languages)
 ```
@@ -180,14 +186,14 @@ go install github.com/go-delve/delve/cmd/dlv@latest
 ## Potential Improvements
 
 ### 1. Additional Language Debugging Support
-✅ **Now Configured**: JavaScript/TypeScript and Go debugging
+✅ **Now Configured**: JavaScript/TypeScript, Go, and Python debugging
 Consider adding:
 ```lua
--- Python (requires debugpy)
-require('dap-python').setup('path/to/python')
-
 -- Rust (requires codelldb via Mason)
 -- Configure with rustaceanvim
+
+-- C/C++ (requires codelldb or gdb)
+-- Configure with nvim-dap
 ```
 
 ### 2. Additional Snacks.nvim Modules (3 Remaining)
