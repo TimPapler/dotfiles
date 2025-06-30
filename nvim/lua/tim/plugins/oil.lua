@@ -3,7 +3,7 @@ return {
   -- Lazy load file explorer when needed
   cmd = { "Oil" },
   keys = {
-    { "<leader>pv", "<cmd>Oil<cr>", desc = "Open Oil file explorer" },
+    { "-", "<cmd>Oil<cr>", desc = "Open Oil file explorer" },
   },
   ---@module 'oil'
   dependencies = { { "echasnovski/mini.icons", opts = {} } },
