@@ -36,6 +36,14 @@ This is a personal Neovim configuration using the modern Lazy.nvim plugin manage
 - Primary tools (snacks.picker) optimized for instant performance
 - Smart loading patterns minimize initial footprint
 
+### Git Integration
+- **Inline hunks**: gitsigns.nvim shows +/- changes in sign column
+- **Hunk operations**: Stage, reset, preview hunks directly in buffer
+- **Blame integration**: Toggle inline blame annotations
+- **Repository browsing**: Open files/lines in GitHub/GitLab via gitbrowse
+- **Fuzzy git operations**: Files, status, commits via snacks.picker
+- **Terminal integration**: LazyGit for complex operations
+
 ## Key Features
 
 ### Snacks.nvim Ecosystem (23 Modules Enabled)
@@ -96,14 +104,15 @@ Located in multiple plugin files:
 - **File operations**: `<leader>sf` (files), `<C-p>` (quick files)
 - **Content search**: `<leader>sg` (grep), `<leader>/` (quick grep)
 - **Navigation**: `<leader>sb` (buffers), `<leader>sr` (resume)
-- **Git integration**: `<leader>gf/gs/gc` (files/status/commits)
+- **Git integration**: `<leader>gf/gs/gc` (files/status/commits), `<leader>gb` (browse)
+- **Git hunks**: `<leader>gh*` (stage/reset/preview hunks), `]h/[h` (navigate)
 - **LSP integration**: `<leader>ld/ls/lr` (diagnostics/symbols/references)
 
 ### Productivity Features
 - **Focus modes**: `<leader>z` (zen), `<leader>Z` (zoom)
 - **Terminal**: `<leader>tt` (terminal), `<leader>tg` (lazygit)
 - **Utilities**: `<leader>S` (scratch), `<leader>q*` (sessions)
-- **Toggles**: `<leader>td/ti/tI/tw` (dim/hints/indent/words)
+- **Toggles**: `<leader>td/ti/tI/tw` (dim/hints/indent/words), `<leader>gt*` (git toggles)
 - **Notifications**: `<leader>nh/nd` (history/dismiss)
 - **Development**: `<leader>gb` (git browse), `<leader>bd` (smart buffer delete)
 
@@ -203,9 +212,11 @@ Consider adding:
 - **win** - Window management utilities  
 - **explorer** - Alternative to oil.nvim (consider evaluation)
 
-### 3. Enhanced Git Integration
-- Consider `lewis6991/gitsigns.nvim` for git hunks and inline blame
+### 3. Additional Git Features
+✅ **Now Added**: gitsigns.nvim for inline hunks and blame
+Consider adding:
 - Project management with `ahmedkhalf/project.nvim`
+- Additional git workflow tools
 
 ### 4. Additional Lazy Loading (5-15% more improvement)
 ```lua
@@ -249,7 +260,16 @@ Consider adding:
 2. **Content search**: Use `<leader>sg` or `<leader>/` for fast content search
 3. **Project exploration**: Use `<leader>pv` for file tree when needed
 4. **Focus work**: Use `<leader>z` for zen mode during deep work
-5. **Git operations**: Use `<leader>tg` for LazyGit or `<leader>g*` for picker-based git
+5. **Git operations**: Use `<leader>tg` for LazyGit, `<leader>g*` for picker-based git, `<leader>gh*` for hunks
+
+### Git Workflow
+1. **Browse changes**: See +/- signs in gutter automatically
+2. **Navigate hunks**: Use `]h`/`[h` to jump between changes
+3. **Stage changes**: Use `<leader>ghs` to stage individual hunks
+4. **Review changes**: Use `<leader>ghp` to preview hunk details
+5. **Blame lines**: Use `<leader>ghb` for full blame info, `<leader>gtb` to toggle inline blame
+6. **Complex operations**: Use `<leader>tg` for LazyGit interface
+7. **Browse online**: Use `<leader>gb` to open current file/line in browser
 
 ### Advanced Features
 1. **Inlay hints**: Toggle with `<leader>h` for enhanced code understanding

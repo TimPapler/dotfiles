@@ -22,6 +22,8 @@ return {
       { "<leader>dp", group = "debug python" },
       { "<leader>t", group = "toggle" },
       { "<leader>g", group = "git" },
+      { "<leader>gh", group = "git hunks" },
+      { "<leader>gt", group = "git toggles" },
       
       -- Navigation groups
       { "[", group = "prev" },
@@ -83,6 +85,24 @@ return {
       { "<leader>gf", desc = "Git files (Snacks)" },
       { "<leader>gs", desc = "Git status (Snacks)" },
       { "<leader>gc", desc = "Git commits (Snacks)" },
+      
+      -- Git hunks (Gitsigns)
+      { "<leader>ghs", desc = "Stage hunk", mode = { "n", "v" } },
+      { "<leader>ghr", desc = "Reset hunk", mode = { "n", "v" } },
+      { "<leader>ghS", desc = "Stage buffer" },
+      { "<leader>ghu", desc = "Undo stage hunk" },
+      { "<leader>ghR", desc = "Reset buffer" },
+      { "<leader>ghp", desc = "Preview hunk" },
+      { "<leader>ghb", desc = "Blame line (full)" },
+      { "<leader>ghd", desc = "Diff this" },
+      { "<leader>ghD", desc = "Diff this (~)" },
+      { "]h", desc = "Next hunk" },
+      { "[h", desc = "Prev hunk" },
+      
+      -- Git toggles (Gitsigns)
+      { "<leader>gtb", desc = "Toggle git blame" },
+      { "<leader>gth", desc = "Toggle git line highlight" },
+      { "<leader>gtH", desc = "Toggle git deleted hunks" },
       
       -- LSP operations (Snacks.picker)
       { "<leader>ld", desc = "LSP diagnostics (Snacks)" },
