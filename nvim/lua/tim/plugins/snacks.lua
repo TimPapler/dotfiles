@@ -107,6 +107,10 @@ return {
     debug = { enabled = true },
     bufdelete = { enabled = true },
     
+    -- Advanced window management
+    layout = { enabled = true },
+    win = { enabled = true },
+    
     -- File explorer (keeping disabled for now, using oil.nvim)
     explorer = { enabled = false },
   },
