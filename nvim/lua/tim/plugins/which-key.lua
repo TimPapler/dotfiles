@@ -18,6 +18,7 @@ return {
       { "<leader>w", group = "window/workspace" },
       { "<leader>r", group = "refactor" },
       { "<leader>d", group = "debug/diagnostics" },
+      { "<leader>dg", group = "debug go" },
       { "<leader>t", group = "toggle" },
       { "<leader>g", group = "git" },
       
@@ -154,6 +155,35 @@ return {
       
       -- System integration
       { "gx", desc = "Open with system app" },
+      
+      -- Debug operations (General DAP)
+      { "<leader>dc", desc = "Debug Continue" },
+      { "<leader>ds", desc = "Debug Step Over" },
+      { "<leader>di", desc = "Debug Step Into" },
+      { "<leader>do", desc = "Debug Step Out" },
+      { "<leader>dR", desc = "Open Debug REPL" },
+      { "<leader>dl", desc = "Debug Run Last" },
+      { "<leader>dq", desc = "Terminate Debug Session" },
+      { "<leader>db", desc = "Toggle Breakpoint (DAP)" },
+      { "<leader>dB", desc = "Set Conditional Breakpoint" },
+      { "<leader>lp", desc = "Set Log Point" },
+      
+      -- Debug operations (Swift/iOS - Xcode)
+      { "<leader>dd", desc = "Build & Debug (Xcode)" },
+      { "<leader>dr", desc = "Debug Without Building (Xcode)" },
+      { "<leader>dt", desc = "Debug Tests (Xcode)" },
+      { "<leader>dT", desc = "Debug Class Tests (Xcode)" },
+      { "<leader>dx", desc = "Terminate Debugger (Xcode)" },
+      { "<leader>b", desc = "Toggle Breakpoint (Xcode)" },
+      { "<leader>B", desc = "Toggle Message Breakpoint (Xcode)" },
+      
+      -- Debug operations (JavaScript/TypeScript)
+      { "<leader>dj", desc = "Debug JS/TS File" },
+      { "<leader>dJ", desc = "Debug Jest Tests" },
+      
+      -- Debug operations (Go)
+      { "<leader>dgt", desc = "Debug Go Test" },
+      { "<leader>dgl", desc = "Debug Last Go Test" },
     },
   },
   keys = {
