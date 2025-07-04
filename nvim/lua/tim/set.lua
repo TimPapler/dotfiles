@@ -25,7 +25,9 @@ vim.opt.shiftwidth = 2
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.showbreak = '↪ '
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -46,6 +48,17 @@ vim.opt.updatetime = 50
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
+
+-- Make window separators more distinct
+vim.opt.fillchars = {
+  vert = '│',
+  horiz = '─',
+  horizup = '┴',
+  horizdown = '┬',
+  vertleft = '┤',
+  vertright = '├',
+  verthoriz = '┼',
+}
 
 vim.filetype.add({
   extension = {
