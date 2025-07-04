@@ -80,7 +80,7 @@ return {
       win = {
         width = 100,
         height = 30,
-        bo = { filetype = "markdown" },
+        bo = { filetype = "text" },
       }
     },
     
@@ -88,13 +88,11 @@ return {
     animate = { 
       enabled = true,
       duration = { step = 15, total = 250 },
-      easing = "out-quart",
     },
     scroll = { 
       enabled = true,
       animate = {
         duration = { step = 15, total = 250 },
-        easing = "out-quart",
       }
     },
     
