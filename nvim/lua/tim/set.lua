@@ -1,7 +1,7 @@
 -- vim.opt.guicursor = ""
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -27,13 +27,12 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = true
 vim.opt.linebreak = true
-vim.opt.showbreak = '↪ '
+vim.opt.showbreak = "↪ "
 
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
-
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
@@ -47,21 +46,21 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
--- Make window separators more distinct
+-- Make window separators more distinct - "Plasma Field" style
 vim.opt.fillchars = {
-  vert = '│',
-  horiz = '─',
-  horizup = '┴',
-  horizdown = '┬',
-  vertleft = '┤',
-  vertright = '├',
-  verthoriz = '┼',
+	vert = "▌",      -- Left half block (energy field)
+	horiz = "▀",     -- Upper half block (force field)
+	horizup = "▛",   -- Quadrant upper left + right
+	horizdown = "▜", -- Quadrant upper right + lower  
+	vertleft = "▐",  -- Right half block
+	vertright = "▌", -- Left half block
+	verthoriz = "▚", -- Diagonal quadrants (plasma intersection)
 }
 
 vim.filetype.add({
-  extension = {
-    metal = "metal",
-  },
+	extension = {
+		metal = "metal",
+	},
 })

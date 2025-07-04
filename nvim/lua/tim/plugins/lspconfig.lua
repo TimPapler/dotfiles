@@ -137,7 +137,6 @@ return {
       }
     })
     vim.lsp.enable('helm_ls')
-    vim.lsp.enable("javascript")
 
     -- For sourcekit, we need to use the traditional lspconfig setup
     -- The new vim.lsp.config API doesn't work well with sourcekit's capabilities

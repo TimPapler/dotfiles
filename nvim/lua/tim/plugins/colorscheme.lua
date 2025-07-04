@@ -21,16 +21,19 @@ return {
 				local theme = colors.theme
 				return {
 					TelescopeTitle = { fg = theme.ui.special, bold = true },
-					TelescopePromptNormal = { bg = theme.ui.bg_p1 },
+					--TelescopePromptNormal = { bg = theme.ui.bg_p1 },
 					TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
 					TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
 					TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
 					TelescopePreviewNormal = { bg = theme.ui.bg_dim },
 					TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
 
-					-- Make window separators more distinct with yellowish color
-					WinSeparator = { fg = colors.palette.boatYellow2, bg = "NONE" },
-					VertSplit = { fg = colors.palette.boatYellow2, bg = "NONE" },
+					-- Make window separators with gold accent
+					WinSeparator = { fg = colors.palette.boatYellow1, bg = colors.palette.sumiInk1 },
+					VertSplit = { fg = colors.palette.boatYellow1, bg = colors.palette.sumiInk1 },
+					-- Line numbers also use bg_gutter
+					LineNr = { bg = theme.ui.bg_gutter },
+					SignColumn = { bg = theme.ui.bg_gutter },
 				}
 			end,
 			theme = "wave", -- Load "wave" theme
