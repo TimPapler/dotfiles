@@ -28,9 +28,30 @@ return {
 					TelescopePreviewNormal = { bg = theme.ui.bg_dim },
 					TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
 
-					-- Make window separators with gold accent
-					WinSeparator = { fg = colors.palette.boatYellow1, bg = colors.palette.sumiInk1 },
-					VertSplit = { fg = colors.palette.boatYellow1, bg = colors.palette.sumiInk1 },
+					-- Make window separators with sakura pink accent
+					WinSeparator = { fg = colors.palette.sakuraPink, bg = colors.palette.sumiInk1 },
+					VertSplit = { fg = colors.palette.sakuraPink, bg = colors.palette.sumiInk1 },
+					
+					-- Alternative color options (uncomment one):
+					-- Subtle purple/violet
+					-- WinSeparator = { fg = colors.palette.oniViolet, bg = colors.palette.sumiInk1 },
+					-- VertSplit = { fg = colors.palette.oniViolet, bg = colors.palette.sumiInk1 },
+					
+					-- Aqua/cyan (calming)
+					-- WinSeparator = { fg = colors.palette.waveAqua2, bg = colors.palette.sumiInk1 },
+					-- VertSplit = { fg = colors.palette.waveAqua2, bg = colors.palette.sumiInk1 },
+					
+					-- Soft pink/sakura
+					-- WinSeparator = { fg = colors.palette.sakuraPink, bg = colors.palette.sumiInk1 },
+					-- VertSplit = { fg = colors.palette.sakuraPink, bg = colors.palette.sumiInk1 },
+					
+					-- Muted green
+					-- WinSeparator = { fg = colors.palette.springGreen, bg = colors.palette.sumiInk1 },
+					-- VertSplit = { fg = colors.palette.springGreen, bg = colors.palette.sumiInk1 },
+					
+					-- Subtle gray (minimal)
+					-- WinSeparator = { fg = colors.palette.sumiInk4, bg = colors.palette.sumiInk1 },
+					-- VertSplit = { fg = colors.palette.sumiInk4, bg = colors.palette.sumiInk1 },
 					-- Line numbers also use bg_gutter
 					LineNr = { bg = theme.ui.bg_gutter },
 					SignColumn = { bg = theme.ui.bg_gutter },

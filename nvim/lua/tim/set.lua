@@ -48,16 +48,38 @@ vim.opt.updatetime = 50
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
 
--- Make window separators more distinct - "Plasma Field" style
+-- Braille pattern borders
 vim.opt.fillchars = {
-	vert = "▌",      -- Left half block (energy field)
-	horiz = "▀",     -- Upper half block (force field)
-	horizup = "▛",   -- Quadrant upper left + right
-	horizdown = "▜", -- Quadrant upper right + lower  
-	vertleft = "▐",  -- Right half block
-	vertright = "▌", -- Left half block
-	verthoriz = "▚", -- Diagonal quadrants (plasma intersection)
+	vert = "⡇", -- vertical dots
+	horiz = "⠤", -- horizontal dots
+	horizup = "⠧", -- junction up
+	horizdown = "⡖", -- junction down
+	vertleft = "⠸", -- junction left
+	vertright = "⠇", -- junction right
+	verthoriz = "⠿", -- cross junction
 }
+
+-- Option 9: Minimalist dots
+-- vim.opt.fillchars = {
+-- 	vert = "·",
+-- 	horiz = "·",
+-- 	horizup = "·",
+-- 	horizdown = "·",
+-- 	vertleft = "·",
+-- 	vertright = "·",
+-- 	verthoriz = "·",
+-- }
+
+-- Option 10: Hexagonal/Honeycomb
+-- vim.opt.fillchars = {
+-- 	vert = "⬡",
+-- 	horiz = "⬡",
+-- 	horizup = "⬡",
+-- 	horizdown = "⬡",
+-- 	vertleft = "⬡",
+-- 	vertright = "⬡",
+-- 	verthoriz = "⬡",
+-- }
 
 vim.filetype.add({
 	extension = {
