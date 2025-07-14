@@ -76,7 +76,7 @@ return {
       { "<leader>sr", desc = "Search resume (Snacks)" },
       { "<leader>sw", desc = "Search current word (Snacks)" },
       { "<leader>sk", desc = "Search keymaps (Snacks)" },
-      { "<leader>sh", desc = "Search help (Snacks)" },
+      { "<leader>sH", desc = "Search help (Snacks)" },
       { "<leader>sc", desc = "Search command history (Snacks)" },
       { "<C-p>", desc = "Quick file search (Snacks)" },
       { "<leader>/", desc = "Quick grep search (Snacks)" },
@@ -128,12 +128,7 @@ return {
       { "<leader>gb", desc = "Git Browse (open in browser)" },
       { "<leader>bd", desc = "Delete Buffer (Smart)" },
       
-      -- Telescope legacy
-      { "<leader>T", group = "telescope (legacy)" },
-      { "<leader>Ts", desc = "Telescope select" },
-      { "<leader>Tn", desc = "Telescope Neovim files" },
-      { "<leader>T/", desc = "Telescope current buffer fuzzy" },
-      { "<leader>T?", desc = "Telescope search open files" },
+      -- Telescope legacy group removed as requested
       
       -- Window management
       { "<leader>sv", desc = "Split window vertically" },

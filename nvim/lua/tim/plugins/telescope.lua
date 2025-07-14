@@ -2,9 +2,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
   'nvim-telescope/telescope.nvim',
   -- Lazy load telescope - now mainly used for legacy/specialized functions
   cmd = { "Telescope" },
-  keys = {
-    { "<leader>T", desc = "Telescope" },
-  },
+  -- No keybindings - all removed as requested
   dependencies = {
     'nvim-lua/plenary.nvim',
     { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -151,28 +149,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     -- Minimal telescope setup - main pickers replaced by snacks.picker
     -- Keep only specialized functions and xcodebuild.nvim dependency
-    local builtin = require 'telescope.builtin'
-    
-    -- Telescope legacy keymaps (prefixed with T to avoid conflicts)
-    vim.keymap.set('n', '<leader>Ts', builtin.builtin, { desc = '[T]elescope [S]elect Telescope' })
-    vim.keymap.set('n', '<leader>Tn', function()
-      builtin.find_files { cwd = vim.fn.stdpath 'config' }
-    end, { desc = '[T]elescope [N]eovim files' })
-    
-    -- Keep specialized telescope functions without snacks equivalents
-    vim.keymap.set('n', '<leader>T/', function()
-      builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        winblend = 10,
-        previewer = false,
-      })
-    end, { desc = '[T]elescope current buffer fuzzy search' })
-    
-    vim.keymap.set('n', '<leader>T?', function()
-      builtin.live_grep {
-        grep_open_files = true,
-        prompt_title = 'Live Grep in Open Files',
-      }
-    end, { desc = '[T]elescope search in open files' })
+    -- All keybindings removed as requested
     
   end,
 }

@@ -110,7 +110,7 @@ function M.setup()
   
   -- Utility pickers
   vim.keymap.set('n', '<leader>sk', function() Snacks.picker.keymaps() end, { desc = '[S]earch [K]eymaps (Snacks)' })
-  vim.keymap.set('n', '<leader>sh', function() Snacks.picker.help() end, { desc = '[S]earch [H]elp (Snacks)' })
+  vim.keymap.set('n', '<leader>sH', function() Snacks.picker.help() end, { desc = '[S]earch [H]elp (Snacks)' })
   vim.keymap.set('n', '<leader>sc', function() Snacks.picker.command_history() end, { desc = '[S]earch [C]ommand History (Snacks)' })
   
   -- Quick alternative mappings (can replace telescope eventually)
