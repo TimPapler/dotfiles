@@ -1,5 +1,3 @@
-local progress_handle = nil
-
 return {
   "wojciech-kulik/xcodebuild.nvim",
   dependencies = {
@@ -21,32 +19,23 @@ return {
         auto_close_on_app_launch = true,
         only_summary = true,
         notify = function(message, severity)
-          local fidget = require("fidget")
-          if progress_handle then
-            progress_handle.message = message
-            if not message:find("Loading") then
-              progress_handle:finish()
-              progress_handle = nil
-              if vim.trim(message) ~= "" then
-                fidget.notify(message, severity)
-              end
-            end
-          else
-            fidget.notify(message, severity)
+          if vim.trim(message) ~= "" then
+            -- Use snacks.nvim's notify instead of fidget
+            Snacks.notify(message, {
+              level = severity,
+              title = "Xcodebuild"
+            })
           end
         end,
         notify_progress = function(message)
-          local progress = require("fidget.progress")
-
-          if progress_handle then
-            progress_handle.title = ""
-            progress_handle.message = message
-          else
-            progress_handle = progress.handle.create({
-              message = message,
-              lsp_client = { name = "xcodebuild.nvim" },
-            })
-          end
+          -- Use snacks.nvim's notify for progress messages
+          -- Create/update notification with a consistent ID
+          Snacks.notify(message, {
+            id = "xcodebuild_progress",  -- Use consistent ID to update the same notification
+            title = "Xcodebuild",
+            level = "info",
+            timeout = message:find("Finished") or message:find("Failed") and 3000 or 0,  -- Auto-dismiss after 3s when done
+          })
         end,
       },
       code_coverage = {
