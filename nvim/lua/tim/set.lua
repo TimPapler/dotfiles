@@ -48,16 +48,6 @@ vim.opt.updatetime = 50
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
 
--- Braille pattern borders
-vim.opt.fillchars = {
-	vert = "⡇", -- vertical dots
-	horiz = "⠤", -- horizontal dots
-	horizup = "⠧", -- junction up
-	horizdown = "⡖", -- junction down
-	vertleft = "⠸", -- junction left
-	vertright = "⠇", -- junction right
-	verthoriz = "⠿", -- cross junction
-}
 
 -- Option 9: Minimalist dots
 -- vim.opt.fillchars = {
