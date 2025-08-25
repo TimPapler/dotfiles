@@ -1,0 +1,18 @@
+# Allowlist approach - ignore everything by default, then explicitly include what we want
+
+# Ignore everything by default
+*
+
+# === ALLOWED - Explicitly include useful development configs ===
+
+# Neovim configuration
+!nvim/
+!nvim/**
+
+# Kitty terminal configuration
+!kitty/
+!kitty/**
+
+# Git configuration files
+!.gitignore
+!README.md
