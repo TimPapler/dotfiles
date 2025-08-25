@@ -21,6 +21,9 @@
 !ai/
 !ai/**
 
+# Homebrew Bundle
+!Brewfile
+
 # Git configuration files
 !.gitignore
 !README.md
