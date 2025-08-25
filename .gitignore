@@ -13,6 +13,14 @@
 !kitty/
 !kitty/**
 
+# Shell configuration (symlinked from home)
+!zshrc
+!zprofile
+
+# AI Assistant configuration (Claude, etc.)
+!ai/
+!ai/**
+
 # Git configuration files
 !.gitignore
 !README.md
