@@ -1,5 +1,6 @@
 return {
   'saghen/blink.cmp',
+  enabled = false, -- Disabled in favor of nvim-cmp
   -- Lazy load completion engine when needed
   event = { "InsertEnter", "CmdlineEnter" },
   -- optional: provides snippets for the snippet source
@@ -27,7 +28,17 @@ return {
     -- C-k: Toggle signature help (if signature.enabled = true)
     --
     -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = 'enter' },
+    keymap = {
+      preset = 'enter',
+      ['<CR>'] = { 'accept', 'fallback' },
+      ['<Tab>'] = { 'select_next', 'fallback' },
+      ['<S-Tab>'] = { 'select_prev', 'fallback' },
+      ['<C-y>'] = { 'accept' },
+      ['<C-e>'] = { 'cancel' },
+      ['<C-n>'] = { 'select_next' },
+      ['<C-p>'] = { 'select_prev' },
+      ['<C-Space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+    },
 
     appearance = {
       -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -36,7 +47,28 @@ return {
     },
 
     -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = false } },
+    completion = { 
+      documentation = { auto_show = false },
+      -- Accept completion on Enter when item is selected
+      accept = {
+        auto_brackets = {
+          enabled = true,
+        },
+      },
+      menu = {
+        -- Make sure menu draws properly
+        draw = {
+          columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+        },
+      },
+      -- Ensure selection behavior is correct
+      list = {
+        selection = {
+          preselect = false, -- IMPORTANT: Must be false when using 'enter' preset
+          auto_insert = false,
+        },
+      },
+    },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
