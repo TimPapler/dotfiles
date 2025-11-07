@@ -8,9 +8,7 @@ function M.setup()
   -- Basic keymaps
   vim.keymap.set("n", "<leader>pv", ":Oil<CR>", { desc = "Open Oil file explorer" })
   
-  -- Better navigation for wrapped lines
-  vim.keymap.set({ "n", "v" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true, desc = "Move down through wrapped lines" })
-  vim.keymap.set({ "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true, desc = "Move up through wrapped lines" })
+  -- Normal j/k navigation (no wrapped line handling needed)
   
   -- System clipboard integration
   vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })

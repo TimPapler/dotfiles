@@ -3,31 +3,31 @@
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
 
+-- Allow backspace to delete across lines
+vim.opt.backspace = { "indent", "eol", "start" }
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
-vim.updatetime = 250 -- decrease update time
 
 -- decrease update time
 -- displays which-key popup sooner
 vim.opt.timeoutlen = 300
 
--- Enable break indent
-vim.opt.breakindent = true
+-- Disable break indent since wrapping is disabled
+vim.opt.breakindent = false
 
 -- always show sign colorcolumn
 vim.opt.signcolumn = "yes"
 
 vim.g.have_nerd_font = true
 vim.opt.tabstop = 4
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
--- vim.opt.expandtab = true -- what ever doesnt do what you'd expect
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = true
-vim.opt.linebreak = true
-vim.opt.showbreak = "↪ "
+vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -41,6 +41,10 @@ vim.opt.smartcase = true
 -- Keep signcolumn on by default
 
 vim.opt.termguicolors = true
+
+-- Built-in completion settings
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.pumheight = 10  -- Max items in completion menu
 vim.opt.scrolloff = 10
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
