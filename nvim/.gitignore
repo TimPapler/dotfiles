@@ -1,0 +1,42 @@
+# Neovim runtime files
+.netrwhist
+*~
+*.swp
+*.swo
+
+# Plugin directories (if using older plugin managers)
+/plugged/
+/pack/
+
+# LSP and DAP
+.lsp/
+.dap/
+
+# Session files
+Session.vim
+*.vim.session
+
+# Tags
+tags
+.tags
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Personal/local configuration
+local.lua
+.local/
+
+# Compiled Lua
+*.luac
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# IDE specific
+.idea/
+.vscode/
+*.code-workspace
