@@ -43,7 +43,7 @@ return {
         },
       },
       floating = {
-        border = "single",
+        border = "rounded",
         mappings = {
           close = { "q", "<Esc>" },
         },
@@ -70,7 +70,7 @@ return {
             { id = "console", size = 0.6 },
           },
           position = "bottom",
-          size = 10,
+          size = 15,
         },
       },
     })
@@ -105,5 +105,10 @@ return {
     dap.listeners.before.event_exited.dapui_config = function()
       dapui.close()
     end
+
+    -- Add DAP UI toggle keymap
+    vim.keymap.set("n", "<leader>du", function()
+      dapui.toggle()
+    end, { desc = "Toggle DAP UI" })
   end,
 }
