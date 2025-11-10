@@ -63,6 +63,22 @@ return {
 			linkSupport = true,
 		}
 
+		-- Override open_floating_preview to set max width globally (before LSP attach)
+		local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+		vim.lsp.util.open_floating_preview = function(contents, syntax, opts)
+			opts = opts or {}
+			opts.border = opts.border or "rounded"
+			opts.max_width = opts.max_width or 80
+			opts.max_height = opts.max_height or 40
+			local bufnr, winnr = orig_util_open_floating_preview(contents, syntax, opts)
+			-- Enable word wrap in the floating window
+			if winnr then
+				vim.wo[winnr].wrap = true
+				vim.wo[winnr].linebreak = true -- wrap at word boundaries
+			end
+			return bufnr, winnr
+		end
+
 		-- Set global config for all LSP servers (applies to lsp/*.lua configs too)
 		vim.lsp.config("*", {
 			capabilities = capabilities,
