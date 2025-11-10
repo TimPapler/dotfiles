@@ -10,7 +10,6 @@ return {
     },
     spec = {
       -- Root level groups
-      { "<leader>a", group = "ai/claude" },
       { "<leader>c", group = "code" },
       { "<leader>f", group = "file/find" },
       { "<leader>p", group = "project" },
@@ -43,10 +42,7 @@ return {
       { "<leader>wa", desc = "Workspace add folder" },
       { "<leader>wr", desc = "Workspace remove folder" },
       { "<leader>wl", desc = "Workspace list folders" },
-      
-      -- Claude Code operations
-      { "<leader>ac", desc = "Toggle Claude Code terminal" },
-      
+
       -- File operations
       { "<leader>pv", desc = "Open Oil file explorer" },
       
