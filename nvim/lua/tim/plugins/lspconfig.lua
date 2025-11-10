@@ -86,6 +86,7 @@ return {
 		vim.lsp.enable("gopls")
 		vim.lsp.enable("helm_ls")
 		vim.lsp.enable("lua_ls")
+		vim.lsp.enable("metal_lsp")
 		vim.lsp.enable("pyright")
 		vim.lsp.enable("ruby-lsp")
 		vim.lsp.enable("sourcekit")
