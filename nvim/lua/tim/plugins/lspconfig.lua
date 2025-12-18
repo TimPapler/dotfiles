@@ -7,6 +7,17 @@ return {
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	config = function()
+		-- Define diagnostic signs (legacy API for compatibility with Trouble, etc.)
+		local signs = {
+			{ name = "DiagnosticSignError", text = " " },
+			{ name = "DiagnosticSignWarn", text = " " },
+			{ name = "DiagnosticSignHint", text = "󰠠 " },
+			{ name = "DiagnosticSignInfo", text = " " },
+		}
+		for _, sign in ipairs(signs) do
+			vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+		end
+
 		-- Enhanced diagnostic configuration
 		vim.diagnostic.config({
 			-- Show diagnostics in virtual text with improved formatting
@@ -17,9 +28,14 @@ return {
 				spacing = 2,
 				severity_sort = true,
 			},
-			-- Enhanced signs with better icons
+			-- Enhanced signs with better icons (modern Neovim 0.10+ API)
 			signs = {
-				enabled = true,
+				text = {
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.HINT] = "󰠠 ",
+					[vim.diagnostic.severity.INFO] = " ",
+				},
 				priority = 100,
 			},
 			-- Improved float window diagnostics
@@ -108,11 +124,5 @@ return {
 		vim.lsp.enable("sourcekit")
 		vim.lsp.enable("ts_ls")
 		vim.lsp.enable("yamlls")
-		-- nice icons
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-		end
 	end,
 }

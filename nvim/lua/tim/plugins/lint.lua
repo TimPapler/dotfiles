@@ -8,6 +8,24 @@ return {
       swift = { "swiftlint" },
     }
 
+    -- Custom swiftlint configuration with correct arguments
+    local default_swiftlint = require("lint.linters.swiftlint")
+    if type(default_swiftlint) == "function" then
+      default_swiftlint = default_swiftlint()
+    end
+
+    lint.linters.swiftlint = {
+      cmd = "swiftlint",
+      stdin = true,
+      args = {
+        "lint",
+        "--use-stdin",
+        "--reporter", "json",
+      },
+      ignore_exitcode = true,
+      parser = default_swiftlint.parser,
+    }
+
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
     vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave", "TextChanged" }, {
