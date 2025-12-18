@@ -88,18 +88,26 @@ Located in `lua/tim/plugins/lspconfig.lua`. **Fully migrated to modern Neovim 0.
 ### Debugging Support
 Located in multiple plugin files:
 - `lua/tim/plugins/dap.lua` - Core DAP configuration and general keybindings
-- `lua/tim/plugins/dap-ui.lua` - Debug UI with panels for stacks, scopes, breakpoints, watches, REPL, console
+- `lua/tim/plugins/dap-ui.lua` - Debug UI with optimized layouts for variable inspection
+- `lua/tim/plugins/dap-virtual-text.lua` - Inline variable values (VS Code-style)
+- `lua/tim/plugins/dap-persistent-breakpoints.lua` - Persistent breakpoints across sessions
 - `lua/tim/plugins/dap-vscode-js.lua` - JavaScript/TypeScript debugging with vscode-js-debug
 - `lua/tim/plugins/dap-go.lua` - Go debugging with delve
 - `lua/tim/plugins/dap-python.lua` - Python debugging with debugpy
 - `lua/tim/plugins/xcodebuild.lua` - Swift/iOS debugging via codelldb
+
+**Key Features**:
+- **Virtual Text**: Variable values shown inline next to code (like VS Code)
+- **Persistent Breakpoints**: Breakpoints saved across sessions automatically
+- **Streamlined UI**: Left panel shows scopes/watches/stacks, bottom shows console/REPL
+- **Hover Evaluation**: Quick variable inspection without opening full UI
+- **Floating Elements**: Quick peek at scopes/stacks in floating windows
 
 **Supported Languages**:
 - **Swift/iOS**: Full xcodebuild integration with device/simulator debugging
 - **JavaScript/TypeScript**: Node.js, Jest tests, and Chrome debugging
 - **Go**: Test debugging and remote attach support
 - **Python**: Test method/class debugging, file debugging with virtual environment support
-- **Debug UI**: Full DAP UI auto-opens/closes with debug sessions
 
 ## Key Mappings
 
@@ -125,16 +133,24 @@ Located in multiple plugin files:
 - **Telescope access**: `<leader>T*` commands for specialized functions
 
 ### Debugging
-- **General DAP**: 
+- **Control Flow**:
   - `<leader>dc` (continue), `<leader>ds` (step over), `<leader>di` (step into), `<leader>do` (step out)
   - `<leader>dR` (open REPL), `<leader>dl` (run last), `<leader>dq` (terminate)
-  - `<leader>db` (toggle breakpoint), `<leader>dB` (conditional breakpoint), `<leader>lp` (log point)
-- **Swift/iOS (Primary)**: 
-  - `<leader>dd` (build & debug), `<leader>dr` (debug without building), `<leader>dt/dT` (debug tests), `<leader>dx` (terminate)
-  - `<leader>b` (toggle breakpoint), `<leader>B` (message breakpoint)
-- **JavaScript/TypeScript**: `<leader>dj` (debug file), `<leader>dJ` (debug Jest tests)
-- **Go**: `<leader>dgt` (debug test), `<leader>dgl` (debug last test)
-- **Python**: `<leader>dpf` (debug file), `<leader>dpm/dpc` (debug test method/class), `<leader>dps` (debug selection)
+- **Breakpoints** (persistent across sessions):
+  - `<leader>db` (toggle breakpoint), `<leader>dB` (conditional breakpoint), `<leader>dC` (clear all)
+  - `<leader>lp` (log point)
+- **Variable Inspection**:
+  - `<leader>dh` (evaluate expression under cursor) - works in visual mode too
+  - `<leader>de` (evaluate in floating window) - persistent window you can interact with
+  - `<leader>df` (float scopes panel) - quick peek at variables
+  - `<leader>dF` (float stacks panel) - quick peek at call stack
+- **UI Control**:
+  - `<leader>du` (toggle DAP UI) - shows/hides full debug interface
+- **Language-Specific**:
+  - **Swift/iOS**: `<leader>dd/dr/dt/dT/dx` (build & debug, debug without build, debug tests, terminate)
+  - **JavaScript/TypeScript**: `<leader>dj/dJ` (debug file, debug Jest tests)
+  - **Go**: `<leader>dgt/dgl` (debug test, debug last test)
+  - **Python**: `<leader>dpf/dpm/dpc/dps` (debug file, test method, test class, selection)
 
 ## Development Commands
 
@@ -193,8 +209,11 @@ pip install debugpy
 # JavaScript/TypeScript: <leader>dj (debug current file)
 # Go: <leader>dgt (debug test at cursor)
 # Python: <leader>dpf (debug file), <leader>dpm (debug test method)
-# General: <leader>dc (continue), <leader>ds (step over)
-# Breakpoints: <leader>b (Swift), <leader>db (other languages)
+
+# Control flow: <leader>dc (continue), <leader>ds (step over), <leader>di/do (step in/out)
+# Breakpoints: <leader>db (toggle - persistent!), <leader>dB (conditional)
+# Inspect variables: <leader>dh (hover eval), <leader>de (eval in float), <leader>df (float scopes)
+# UI: <leader>du (toggle full UI) - often not needed thanks to virtual text!
 ```
 
 ## Potential Improvements
