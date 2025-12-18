@@ -34,6 +34,8 @@ return {
 			width = { min = 40, max = 0.4 },
 			height = { min = 1, max = 0.6 },
 			style = "compact",
+			top_down = false, -- Show from bottom up
+			margin = { top = 0, right = 1, bottom = 1 }, -- Keep away from edges
 		},
 
 		-- Fuzzy finder and navigation
@@ -43,6 +45,12 @@ return {
 			backdrop = {
 				enabled = true,
 				bg = "NormalFloat", -- Use floating window background from Kanagawa
+			},
+			win = {
+				-- Avoid opening files in special windows like Trouble
+				wo = {
+					winfixbuf = false,
+				},
 			},
 		},
 		scope = { enabled = true },

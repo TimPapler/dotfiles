@@ -48,7 +48,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
     require('telescope').setup {
       defaults = {
         prompt_prefix = " ",
-        selection_caret = " ",
+        selection_caret = "▸ ",
+        entry_prefix = "  ",
         path_display = { "truncate" },
         file_ignore_patterns = { "%.git/", "node_modules", "%.npm/", "__pycache__", "%.DS_Store" },
         layout_config = {

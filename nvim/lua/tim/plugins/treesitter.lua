@@ -40,7 +40,6 @@ return {
         "json",
         "yaml",
         "latex",
-        "norg",
         "svelte",
         "tsx",
         "typst",
