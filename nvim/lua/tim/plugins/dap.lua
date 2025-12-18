@@ -19,11 +19,8 @@ return {
 		vim.keymap.set("n", "<leader>dl", dap.run_last, { desc = "Debug Run Last" })
 		vim.keymap.set("n", "<leader>dq", dap.terminate, { desc = "Terminate Debug Session" })
 
-		-- General DAP breakpoints (for non-Xcode debugging)
-		vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle Breakpoint (DAP)" })
-		vim.keymap.set("n", "<leader>dB", function()
-			dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-		end, { desc = "Set Conditional Breakpoint" })
+		-- Note: Breakpoint keybindings (<leader>db, <leader>dB) are in dap-persistent-breakpoints.lua
+		-- This provides persistent breakpoints across sessions
 		vim.keymap.set("n", "<leader>lp", function()
 			dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
 		end, { desc = "Set Log Point" })
@@ -33,13 +30,6 @@ return {
 		vim.keymap.set("n", "<leader>dr", xcodebuild.debug_without_build, { desc = "Debug Without Building (Xcode)" })
 		vim.keymap.set("n", "<leader>dt", xcodebuild.debug_tests, { desc = "Debug Tests (Xcode)" })
 		vim.keymap.set("n", "<leader>dT", xcodebuild.debug_class_tests, { desc = "Debug Class Tests (Xcode)" })
-		vim.keymap.set("n", "<leader>b", xcodebuild.toggle_breakpoint, { desc = "Toggle Breakpoint (Xcode)" })
-		vim.keymap.set(
-			"n",
-			"<leader>B",
-			xcodebuild.toggle_message_breakpoint,
-			{ desc = "Toggle Message Breakpoint (Xcode)" }
-		)
 		vim.keymap.set("n", "<leader>dx", xcodebuild.terminate_session, { desc = "Terminate Debugger (Xcode)" })
 	end,
 }

@@ -12,10 +12,10 @@ return {
       expand_lines = true,
       element_mappings = {},
       render = {
-        indent = 20,
+        indent = 1,  -- Minimal indentation (2 spaces per level)
         max_value_lines = 100,
         line_numbers = true,
-        max_string_length = 50,
+        max_string_length = nil,  -- No limit on string display
         max_array_length = 100,
         max_children = 100,
       },
@@ -55,22 +55,30 @@ return {
       },
       layouts = {
         {
+          -- Primary sidebar - focused on variable inspection
           elements = {
-            { id = "stacks",      size = 0.25 },
-            { id = "scopes",      size = 0.25 },
-            { id = "breakpoints", size = 0.25 },
-            { id = "watches",     size = 0.25 },
+            { id = "scopes",  size = 0.5 },  -- Variables in current scope (most important)
+            { id = "watches", size = 0.3 },  -- Watch expressions
+            { id = "stacks",  size = 0.2 },  -- Call stack
           },
           position = "left",
-          size = 40,
+          size = 50,  -- Wider for better readability
         },
         {
+          -- Bottom panel - REPL only
           elements = {
-            { id = "repl",    size = 0.4 },
-            { id = "console", size = 0.6 },
+            { id = "repl", size = 1.0 },  -- Debug REPL (also shows output)
           },
           position = "bottom",
-          size = 15,
+          size = 12,
+        },
+        {
+          -- Secondary sidebar (hidden by default, toggle with :lua require('dapui').open(3))
+          elements = {
+            { id = "breakpoints", size = 1.0 },
+          },
+          position = "right",
+          size = 40,
         },
       },
     })
@@ -106,9 +114,29 @@ return {
       dapui.close()
     end
 
-    -- Add DAP UI toggle keymap
+    -- DAP UI keymaps
     vim.keymap.set("n", "<leader>du", function()
       dapui.toggle()
     end, { desc = "Toggle DAP UI" })
+
+    -- Hover evaluation - see variable value under cursor
+    vim.keymap.set({ "n", "v" }, "<leader>dh", function()
+      dapui.eval()
+    end, { desc = "Evaluate Expression" })
+
+    -- Evaluate expression in floating window (persistent)
+    vim.keymap.set({ "n", "v" }, "<leader>de", function()
+      dapui.eval(nil, { enter = true })
+    end, { desc = "Evaluate in Floating Window" })
+
+    -- Float scopes element (quick peek at variables without full UI)
+    vim.keymap.set("n", "<leader>df", function()
+      dapui.float_element("scopes", { enter = true })
+    end, { desc = "Float Scopes" })
+
+    -- Float stacks element (quick peek at call stack)
+    vim.keymap.set("n", "<leader>dF", function()
+      dapui.float_element("stacks", { enter = true })
+    end, { desc = "Float Stacks" })
   end,
 }
