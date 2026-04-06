@@ -1,4 +1,2 @@
-return {
-  'mbbill/undotree',
-  cmd = { "UndotreeToggle", "UndotreeShow", "UndotreeHide" },
-}
+-- Built-in undotree (Neovim 0.12+), no plugin needed
+return {}

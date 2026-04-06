@@ -19,8 +19,8 @@ This is a personal Neovim configuration using the modern Lazy.nvim plugin manage
 
 #### Primary Stack (Always Active)
 - **UI/UX Framework**: snacks.nvim (19/25 modules enabled) - Core framework for UI, fuzzy finding, notifications, terminal, etc.
-- **Completion**: blink.cmp - Modern completion engine (lazy loads on InsertEnter/CmdlineEnter)
-- **LSP**: nvim-lspconfig with modern `vim.lsp.config()` API (Neovim 0.11+)
+- **Completion**: Native Neovim 0.12 completion (`autocomplete` + `vim.lsp.completion`)
+- **LSP**: nvim-lspconfig with modern `vim.lsp.config()` API (Neovim 0.12+)
 - **Colorscheme**: kanagawa.nvim
 
 #### On-Demand Stack (Lazy Loaded)
@@ -77,13 +77,14 @@ This is a personal Neovim configuration using the modern Lazy.nvim plugin manage
 **Note**: `explorer` module intentionally disabled - Oil.nvim provides superior file management
 
 ### LSP Configuration
-Located in `lua/tim/plugins/lspconfig.lua`. **Fully migrated to modern Neovim 0.11+ API**:
+Located in `lua/tim/plugins/lspconfig.lua`. **Fully migrated to modern Neovim 0.12+ API**:
 - Uses `vim.lsp.config()` and `vim.lsp.enable()` instead of legacy `lspconfig.setup()`
 - Uses `LspAttach` autocommand for keymaps instead of `on_attach` functions
+- Native LSP completion via `vim.lsp.completion.enable()` with autotrigger
 - Enhanced diagnostics with virtual text, rounded borders, source attribution
-- Inlay hints support with auto-detection and manual toggle (`<leader>h`)
-- Servers configured: cssls, gopls, helm_ls, sourcekit, pyright, lua_ls, ts_ls, yamlls, javascript
-- Language-specific optimizations for Go, Lua, TypeScript/JavaScript
+- Inlay hints support with auto-detection and manual toggle (`<leader>ti`)
+- Servers configured: cssls, gopls, helm_ls, sourcekit, pyright, lua_ls, ts_ls, yamlls, metal_lsp, ruby-lsp
+- LSP server configs in `lsp/` directory (Neovim 0.12 convention)
 
 ### Debugging Support
 Located in multiple plugin files:
@@ -182,14 +183,17 @@ vim.lsp.config('server_name', {
 # Check health
 :checkhealth
 
-# Check LSP status
-:LspInfo
+# Check LSP status (Neovim 0.12+)
+:checkhealth vim.lsp
 
 # View LSP logs
-:LspLog
+:lsp log
+
+# Restart LSP
+:lsp restart
 
 # Enable LSP debug logging (add to set.lua)
-vim.lsp.set_log_level("debug")
+vim.lsp.log.set_level("debug")
 ```
 
 ### Debugging
@@ -257,19 +261,19 @@ Consider adding:
   ft = { "json" },
 }
 
-{
-  "mbbill/undotree",
-  cmd = { "UndotreeToggle", "UndotreeShow", "UndotreeHide" }, -- 1-2% improvement
-}
-
 -- Kept eager loading (due to tight integrations):
 -- xcodebuild.nvim - integrated with DAP, trouble.nvim, autocmds
 ```
 **Total improvement**: 3-8% additional startup performance with zero functionality loss
 
-### 5. Advanced Enhancements
-- Built-in completion (could experiment with removing blink.cmp)
-- Further LSP simplifications possible
+### 5. Neovim 0.12 Migrations (✅ Complete!)
+- **Native completion**: Replaced nvim-cmp with `vim.o.autocomplete` + `vim.lsp.completion`
+- **Built-in undotree**: Replaced `mbbill/undotree` with `:packadd nvim.undotree`
+- **Global window borders**: `vim.o.winborder = "rounded"` replaces per-window border config
+- **Completion popup**: `vim.o.pumborder = "rounded"`, `vim.o.pummaxwidth = 60`
+- **LSP commands**: `:lsp restart`, `:lsp log`, `:checkhealth vim.lsp`
+- **Treesitter node selection**: Built-in `v_an`/`v_in`/`v_]n`/`v_[n`
+- **New default keymaps**: `grt` (type definition), `grx` (codelens run)
 
 ## File Types and Language Servers
 - Custom filetype detection for `.metal` files in `ftdetect/metal.lua`
@@ -318,9 +322,9 @@ Consider adding:
 
 ## Status
 
-**Configuration Status**: ✅ Elite Power User Setup Complete
-- Modern Neovim 0.11+ configuration with 100% Snacks.nvim adoption
-- Enterprise-level development features (4-language debugging, complete git workflow)
-- Highly optimized performance (18-28% faster startup with conservative optimizations)
-- Comprehensive UI/UX ecosystem with advanced window management
-- Production-ready with zero functionality compromises
+**Configuration Status**: ✅ Neovim 0.12 - Fully Modern
+- Neovim 0.12+ configuration with native completion, 100% Snacks.nvim adoption
+- Native LSP completion replaces nvim-cmp (6 fewer dependencies)
+- Built-in undotree replaces mbbill/undotree
+- 4-language debugging, complete git workflow
+- Optimized performance with strategic lazy loading

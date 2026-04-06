@@ -65,9 +65,9 @@ return {
           size = 50,  -- Wider for better readability
         },
         {
-          -- Bottom panel - REPL only
+          -- Bottom panel - REPL only (device logs via stream-device-logs.nvim)
           elements = {
-            { id = "repl", size = 1.0 },  -- Debug REPL (also shows output)
+            { id = "repl", size = 1.0 },
           },
           position = "bottom",
           size = 12,

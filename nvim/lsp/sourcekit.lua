@@ -1,5 +1,5 @@
 return {
-	cmd = { vim.trim(vim.fn.system("xcrun -f sourcekit-lsp")) },
+	cmd = { "xcrun", "sourcekit-lsp" },
 
 	filetypes = { "swift", "objc", "objcpp", "c", "cpp" },
 

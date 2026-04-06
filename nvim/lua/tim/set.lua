@@ -42,41 +42,21 @@ vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 
--- Built-in completion settings
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
-vim.opt.pumheight = 10  -- Max items in completion menu
-vim.opt.scrolloff = 10
+-- Global floating window border (Neovim 0.12+)
+vim.o.winborder = "rounded"
+
+-- Native completion (Neovim 0.12+, autotrigger via vim.lsp.completion in lspconfig)
+vim.opt.completeopt = { "menu", "menuone", "noselect", "nearest", "popup" }
+vim.opt.pumheight = 10
+vim.o.pumborder = "none"
+vim.o.pummaxwidth = 60
+vim.opt.scrolloff = 20
+vim.opt.sidescrolloff = 20
+vim.opt.smoothscroll = true
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "both"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
-
-
--- Option 9: Minimalist dots
--- vim.opt.fillchars = {
--- 	vert = "·",
--- 	horiz = "·",
--- 	horizup = "·",
--- 	horizdown = "·",
--- 	vertleft = "·",
--- 	vertright = "·",
--- 	verthoriz = "·",
--- }
-
--- Option 10: Hexagonal/Honeycomb
--- vim.opt.fillchars = {
--- 	vert = "⬡",
--- 	horiz = "⬡",
--- 	horizup = "⬡",
--- 	horizdown = "⬡",
--- 	vertleft = "⬡",
--- 	vertright = "⬡",
--- 	verthoriz = "⬡",
--- }
-
-vim.filetype.add({
-	extension = {
-		metal = "metal",
-	},
-})

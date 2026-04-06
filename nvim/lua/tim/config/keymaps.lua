@@ -14,14 +14,8 @@ function M.setup()
 	vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 	vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank line to system clipboard" })
 
-	-- Diagnostic keymaps
-	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+	-- Diagnostic float (navigation [d/]d and <Esc> clear are 0.12 defaults)
 	vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error messages" })
-	-- Note: <leader>ld uses Snacks.picker.diagnostics() for a better diagnostic view
-
-	-- Clear search highlight
-	vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
 
 	-- Better window navigation
 	vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Navigate to left window" })
@@ -211,40 +205,19 @@ function M.setup()
 end
 
 -- LSP keymaps (will be called from LspAttach autocmd)
+-- 0.12 defaults handle: gd, gD, grr, gri, grt, grx, gra, grn, gO, K, C-s, [d, ]d
 function M.lsp_keymaps(bufnr)
 	local function map(mode, lhs, rhs, desc)
 		vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = "LSP: " .. desc })
 	end
 
-	-- Navigation
-	map("n", "gd", vim.lsp.buf.definition, "Goto definition")
-	map("n", "gD", vim.lsp.buf.declaration, "Goto declaration")
-	map("n", "gr", vim.lsp.buf.references, "Goto references")
-	map("n", "gI", vim.lsp.buf.implementation, "Goto implementation")
-	map("n", "<leader>D", vim.lsp.buf.type_definition, "Type definition")
-	map("n", "<leader>ds", vim.lsp.buf.document_symbol, "Document symbols")
 	map("n", "<leader>ws", vim.lsp.buf.workspace_symbol, "Workspace symbols")
-
-	-- Hover and signature help
-	map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
-	map("n", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
-	map("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
-
-	-- Actions
-	map({ "n", "v" }, "<leader>c", vim.lsp.buf.code_action, "Code action")
-	map("n", "<leader>rn", vim.lsp.buf.rename, "Rename")
-	-- Note: Formatting handled by conform.nvim (<leader>mp) with LSP fallback
-	-- Note: Inlay hints toggle via <leader>ti (Snacks.toggle.inlay_hints)
-
-	-- Workspace
 	map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace add folder")
 	map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace remove folder")
 	map("n", "<leader>wl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, "Workspace list folders")
-
-	-- LSP management
-	map("n", "<leader>lR", "<cmd>LspRestart<cr>", "Restart LSP")
+	map("n", "<leader>lR", "<cmd>lsp restart<cr>", "Restart LSP")
 end
 
 return M

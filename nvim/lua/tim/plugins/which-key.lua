@@ -19,6 +19,7 @@ return {
       { "<leader>dg", group = "debug go" },
       { "<leader>dp", group = "debug python" },
       { "<leader>t", group = "toggle" },
+      { "<leader>a", group = "accessibility" },
       { "<leader>g", group = "git" },
       { "<leader>gh", group = "git hunks" },
       { "<leader>gt", group = "git toggles" },

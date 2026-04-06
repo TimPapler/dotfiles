@@ -7,14 +7,16 @@ return {
 		"nvim-treesitter/nvim-treesitter", -- (optional) for Quick tests support (required Swift parser)
 	},
 	config = function()
+		-- Set as real env var so SPM Package.swift can read it via ProcessInfo
+		vim.env.RUNNING_VIA_INJECTION_NEXT = "YES"
+
 		require("xcodebuild").setup({
 			show_build_progress_bar = true,
-
 			logs = {
 				auto_open_on_success_tests = false,
 				auto_open_on_failed_tests = false,
 				auto_open_on_success_build = false,
-				auto_open_on_failed_build = false,
+				auto_open_on_failed_build = true,
 				auto_focus = false,
 				auto_close_on_app_launch = true,
 				only_summary = false,
@@ -59,7 +61,7 @@ return {
 					enabled = false,
 				},
 				oil = {
-					enabled = false,
+					enabled = true,
 				},
 			},
 		})

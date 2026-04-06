@@ -1,6 +1,6 @@
 return {
 	"rebelot/kanagawa.nvim",
-	mame = "kanagawa",
+	name = "kanagawa",
 	config = function()
 		require("kanagawa").setup({
 			compile = false, -- enable compiling the colorscheme
@@ -20,6 +20,10 @@ return {
 			overrides = function(colors) -- add/modify highlights
 				local theme = colors.theme
 				return {
+
+					-- Cursorline: subtle bg for visual anchor
+					CursorLine = { bg = colors.palette.sumiInk4 },
+					CursorLineNr = { fg = colors.palette.carpYellow, bold = true },
 
 					-- Make window separators with sakura pink accent
 					WinSeparator = { fg = colors.palette.sakuraPink, bg = colors.palette.sumiInk1 },
@@ -49,7 +53,7 @@ return {
 			end,
 			theme = "wave", -- Load "wave" theme
 			background = { -- map the value of 'background' option to a theme
-				dark = "wave", -- try "dragon" !
+				dark = "wave",
 				light = "lotus",
 			},
 		})
