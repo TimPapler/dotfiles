@@ -10,45 +10,17 @@ return {
 			keywordStyle = { italic = true },
 			statementStyle = { bold = true },
 			typeStyle = {},
-			transparent = true, -- do not set background color
+			transparent = false,
 			dimInactive = false, -- dim inactive window `:h hl-NormalNC`
 			terminalColors = true, -- define vim.g.terminal_color_{0,17}
 			colors = { -- add/modify theme and palette colors
 				palette = {},
 				theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
 			},
-			overrides = function(colors) -- add/modify highlights
-				local theme = colors.theme
+			overrides = function(colors)
 				return {
-
-					-- Cursorline: subtle bg for visual anchor
-					CursorLine = { bg = colors.palette.sumiInk4 },
-					CursorLineNr = { fg = colors.palette.carpYellow, bold = true },
-
-					-- Make window separators with sakura pink accent
 					WinSeparator = { fg = colors.palette.sakuraPink, bg = colors.palette.sumiInk1 },
 					VertSplit = { fg = colors.palette.sakuraPink, bg = colors.palette.sumiInk1 },
-					
-					-- Alternative color options (uncomment one):
-					-- Subtle purple/violet
-					-- WinSeparator = { fg = colors.palette.oniViolet, bg = colors.palette.sumiInk1 },
-					-- VertSplit = { fg = colors.palette.oniViolet, bg = colors.palette.sumiInk1 },
-					
-					-- Aqua/cyan (calming)
-					-- WinSeparator = { fg = colors.palette.waveAqua2, bg = colors.palette.sumiInk1 },
-					-- VertSplit = { fg = colors.palette.waveAqua2, bg = colors.palette.sumiInk1 },
-					
-					-- Soft pink/sakura
-					-- WinSeparator = { fg = colors.palette.sakuraPink, bg = colors.palette.sumiInk1 },
-					-- VertSplit = { fg = colors.palette.sakuraPink, bg = colors.palette.sumiInk1 },
-					
-					-- Muted green
-					-- WinSeparator = { fg = colors.palette.springGreen, bg = colors.palette.sumiInk1 },
-					-- VertSplit = { fg = colors.palette.springGreen, bg = colors.palette.sumiInk1 },
-					
-					-- Subtle gray (minimal)
-					-- WinSeparator = { fg = colors.palette.sumiInk4, bg = colors.palette.sumiInk1 },
-					-- VertSplit = { fg = colors.palette.sumiInk4, bg = colors.palette.sumiInk1 },
 				}
 			end,
 			theme = "wave", -- Load "wave" theme
@@ -59,6 +31,8 @@ return {
 		})
 
 		vim.cmd("colorscheme kanagawa")
+		vim.api.nvim_set_hl(0, "CursorLine", { bg = "#363646" })
+		vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#e6c384", bold = true })
 		vim.api.nvim_create_autocmd("ColorScheme", {
 			pattern = "kanagawa",
 			callback = function()
