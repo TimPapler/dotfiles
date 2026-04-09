@@ -96,6 +96,19 @@ return {
 			end,
 		})
 
+		-- Clean up completion when LSP client detaches
+		vim.api.nvim_create_autocmd("LspDetach", {
+			desc = "LSP cleanup",
+			callback = function(event)
+				vim.lsp.completion.enable(false, event.data.client_id, event.buf)
+			end,
+		})
+
+		-- Override lspconfig's built-in sourcekit cmd (it drops xcrun)
+		vim.lsp.config("sourcekit", {
+			cmd = { "xcrun", "sourcekit-lsp" },
+		})
+
 		-- Enable LSP servers (configs loaded from lsp/*.lua)
 		vim.lsp.enable("cssls")
 		vim.lsp.enable("gopls")

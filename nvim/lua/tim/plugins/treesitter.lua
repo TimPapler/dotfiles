@@ -43,5 +43,23 @@ return {
         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
       end,
     })
+
+    -- Force full reparse for languages with buggy incremental parsing (e.g. Swift)
+    local buggy_incremental = { swift = true }
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function(args)
+        if not buggy_incremental[args.match] then return end
+        vim.api.nvim_create_autocmd("TextChanged", {
+          buffer = args.buf,
+          callback = function()
+            local ok, parser = pcall(vim.treesitter.get_parser, args.buf)
+            if ok and parser then
+              parser:invalidate(true)
+              parser:parse()
+            end
+          end,
+        })
+      end,
+    })
   end,
 }

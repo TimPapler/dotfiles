@@ -205,12 +205,14 @@ function M.setup()
 end
 
 -- LSP keymaps (will be called from LspAttach autocmd)
--- 0.12 defaults handle: gd, gD, grr, gri, grt, grx, gra, grn, gO, K, C-s, [d, ]d
+-- 0.12 defaults handle: grr, gri, grt, grx, gra, grn, gO, K, C-s, [d, ]d
 function M.lsp_keymaps(bufnr)
 	local function map(mode, lhs, rhs, desc)
 		vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = "LSP: " .. desc })
 	end
 
+	map("n", "gd", vim.lsp.buf.definition, "Go to definition")
+	map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
 	map("n", "<leader>ws", vim.lsp.buf.workspace_symbol, "Workspace symbols")
 	map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace add folder")
 	map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace remove folder")
